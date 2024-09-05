@@ -1,7 +1,7 @@
 #ifndef MAZE_H
 #define MAZE_H
 
-#include <../sdl/SDL.h>
+#include <SDL2/SDL.h>
 #include <stdio.h>
 #include <stddef.h>
 #include <stdbool.h>
