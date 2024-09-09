@@ -1,50 +1,49 @@
+/* maze.h */
 #ifndef MAZE_H
 #define MAZE_H
 
 #include <SDL2/SDL.h>
-#include <stdio.h>
-#include <stddef.h>
-#include <stdbool.h>
+#include <SDL2/SDL_image.h>
 #include <math.h>
+#include <stdio.h>
 
+#define SCREEN_WIDTH 640
+#define SCREEN_HEIGHT 480
+#define MAP_WIDTH 10
+#define MAP_HEIGHT 10
+#define FOV 60
+#define NUM_RAYS SCREEN_WIDTH
+#define PLAYER_SPEED 0.05
+#define PLAYER_ROT_SPEED 0.03
+#define TILE_SIZE 1.0
+#define MAP_SCALE 10  /* Scale for the minimap (each map tile is 10x10 pixels) */
 
-// Maze Structures
 typedef struct SDL_Instance
 {
         SDL_Window *window;
         SDL_Renderer *renderer;
 } SDL_Instance;
 
-// player coordinates
-typedef struct positions_s
-{
-    float x;
-    float y;
-    float camAngle;
-} positions_t;
+/* Player structure */
+typedef struct {
+    double x, y;
+    double angle;
+} Player;
 
-/**
- * struct Screen - screen dimensions
- * @WIDTH: width of the screen
- * @HEIGHT: height of the screen
- *
- * Description: holds information about the window/screen dimensions
- */
-typedef struct Screen
-{
-    const int WIDTH;
-    const int HEIGHT;
-} Screen;
+/* Global variables */
+extern int map[MAP_WIDTH][MAP_HEIGHT];
+extern SDL_Texture* wall_texture;  /* Wall texture */
+extern SDL_Texture* ceiling_texture; /* Ceiling texture */
 
-extern Screen SCREEN;
-// 1 is a wall and the 0 are empt spaces
-extern int map[8][8];
+/* Function declarations */
+int init_instance(SDL_Instance *instance);
+void handle_input(Player *player, const Uint8 *keyState);
+void render_textured_floor_and_ceiling(SDL_Renderer *renderer, Player player);
+double cast_ray(double player_x, double player_y, double ray_angle, int *side, double *hit_x);
+void render_walls(SDL_Renderer *renderer, Player player);
+SDL_Texture* load_texture(SDL_Renderer *renderer, const char* file);
+void render_map(SDL_Renderer *renderer, Player player);  /* New function to render the 2D map */
+void render_env(SDL_Renderer *rendrer, Player player);
+int load_map_from_file(const char* filename);
 
-// Maze Functions
-int init_instance(SDL_Instance **);
-void handle_keys(const float rot_speed, const float cam_speed, positions_t *player, SDL_Event *e);
-void player_motion(float diffX, float diffY, positions_t **player);
-bool handle_collision(float x, float y, int map[8][8]);
-void renderWalls(SDL_Renderer *renderer, Screen SCREEN, int map[8][8], int map_width, int map_Height, positions_t *player);
-
-#endif
+#endif /* MAZE_H*/

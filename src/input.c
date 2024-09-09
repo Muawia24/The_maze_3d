@@ -1,6 +1,6 @@
 #include "headers/maze.h"
-
-// Function to handle input and sliding along walls when colliding
+int map[MAP_WIDTH][MAP_HEIGHT];
+/* Function to handle input and sliding along walls when colliding */
 void handle_input(Player *player, const Uint8 *keyState) {
     double move_x = 0, move_y = 0;
 
@@ -13,11 +13,11 @@ void handle_input(Player *player, const Uint8 *keyState) {
         move_y = -sin(player->angle) * PLAYER_SPEED;
     }
 
-    // Check X-axis collision
+    /* Check X-axis collision */
     if (map[(int)(player->x + move_x)][(int)player->y] == 0) {
         player->x += move_x;
     }
-    // Check Y-axis collision
+    /* Check Y-axis collision */
     if (map[(int)player->x][(int)(player->y + move_y)] == 0) {
         player->y += move_y;
     }
