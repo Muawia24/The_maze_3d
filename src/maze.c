@@ -6,17 +6,17 @@
  * @player: a struct that holds player directions and coordinates.
  * Return: nothing
  */
-void render_env(SDL_Renderer *renderer, Player player)
+void render_env(SDL_Renderer *renderer, Game_env *game, Player player)
 {
 	/* Clear screen */
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
 	/* Render the textured floor and ceiling */
-	render_textured_floor_and_ceiling(renderer, player);
+	render_textured_floor_and_ceiling(renderer, game, player);
 	/* Render walls with textures */
-	render_walls(renderer, player);
+	render_walls(renderer, game, player);
 	/* Render the 2D map */
-	render_map(renderer, player);
+	render_map(renderer, game, player);
 	/* Present renderer */
 	SDL_RenderPresent(renderer);
 }
@@ -28,23 +28,22 @@ void render_env(SDL_Renderer *renderer, Player player)
  * @file2: path to ceil texture.
  * Return: 0 in success otherwise 1.
  */
-int load_all_textures(SDL_Renderer *renderer, SDL_Window *window,
+int load_all_textures(SDL_Renderer *renderer, Game_env *game, SDL_Window *window,
 			const char *file1, const char *file2)
 {
 	/* Load the wall texture */
-	wall_texture = load_texture(renderer, file1);
-	if (!wall_texture)
+	game->wall_texture = load_texture(renderer, file1);
+	if (!game->wall_texture)
 	{
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
-		SDL_Quit();
 		return (1);
 	}
 	/* Load the ceiling texture */
-	ceiling_texture = load_texture(renderer, file2);
-	if (!ceiling_texture)
+	game->ceiling_texture = load_texture(renderer, file2);
+	if (!game->ceiling_texture)
 	{
-		SDL_DestroyTexture(wall_texture);
+		SDL_DestroyTexture(game->wall_texture);
 		SDL_DestroyRenderer(renderer);
 		SDL_DestroyWindow(window);
 		SDL_Quit();
@@ -75,11 +74,12 @@ int main(int argc, char *argv[])
 	int running = 1;
 	SDL_Event event;
 	SDL_Instance instance;
+	Game_env game;
 
 	if (init_instance(&instance) != 0)
 		return (1);
 	/* Load the map from a file */
-	if (load_map_from_file("maps/map.txt") != 0)
+	if (load_map_from_file("maps/map.txt", &game) != 0)
 	{
 		clean_up(instance.renderer, instance.window);
 		return (1);
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
 	Player player = {5, 5, 0};  /* Start in the middle of the map */
 
 	/* Load textures */
-	if (load_all_textures(instance.renderer, instance.window,
+	if (load_all_textures(instance.renderer, &game, instance.window,
 				"textures/Bricks.png",
 				"textures/ceiling-sky.png") != 0)
 		return (1);
@@ -102,14 +102,14 @@ int main(int argc, char *argv[])
 				running = 0;
 		}
 		/* Handle input */
-		handle_input(&player, keyState);
+		handle_input(&player, &game, keyState);
 		/* Render Game environment */
-		render_env(instance.renderer, player);
+		render_env(instance.renderer, &game,player);
 		SDL_Delay(16);  /* ~60 FPS */
 	}
 	/* Cleanup */
-	SDL_DestroyTexture(wall_texture);
-	SDL_DestroyTexture(ceiling_texture);
+	SDL_DestroyTexture(game.wall_texture);
+	SDL_DestroyTexture(game.ceiling_texture);
 	clean_up(instance.renderer, instance.window);
 	return (0);
 }

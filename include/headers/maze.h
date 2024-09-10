@@ -40,21 +40,29 @@ typedef struct Player
 	double angle;
 } Player;
 
-/* Global variables */
-extern int map[MAP_WIDTH][MAP_HEIGHT];
-extern SDL_Texture *wall_texture;  /* Wall texture */
-extern SDL_Texture *ceiling_texture; /* Ceiling texture */
-
+/**
+ * struct game_env - struct for game map and textures.
+ * @map: map array.
+ * @ceiling_texture: Ceiling texture
+ * @wall_texture: Wall texture.
+ */
+typedef struct Game_env
+{
+        int map[MAP_WIDTH][MAP_HEIGHT];
+        SDL_Texture *wall_texture;
+        SDL_Texture *ceiling_texture; 
+} Game_env;
 /* Function declarations */
 int init_instance(SDL_Instance *instance);
-void handle_input(Player *player, const Uint8 *keyState);
-void render_textured_floor_and_ceiling(SDL_Renderer *renderer, Player player);
+void handle_input(Player *player, Game_env *game, const Uint8 *keyState);
+void render_textured_floor_and_ceiling(SDL_Renderer *renderer,
+		Game_env *game, Player player);
 double cast_ray(double player_x, double player_y, double ray_angle,
-		int *side, double *hit_x);
-void render_walls(SDL_Renderer *renderer, Player player);
+		int *side, double *hit_x, Game_env *game);
+void render_walls(SDL_Renderer *renderer, Game_env *game, Player player);
 SDL_Texture *load_texture(SDL_Renderer *renderer, const char *file);
-void render_map(SDL_Renderer *renderer, Player player);
-void render_env(SDL_Renderer *rendrer, Player player);
-int load_map_from_file(const char *filename);
+void render_map(SDL_Renderer *renderer, Game_env *game, Player player);
+void render_env(SDL_Renderer *rendrer, Game_env *game, Player player);
+int load_map_from_file(const char *filename, Game_env *game);
 
 #endif /* MAZE_H*/

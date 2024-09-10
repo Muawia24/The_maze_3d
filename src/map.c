@@ -41,7 +41,7 @@ void draw_player_mapDirection(SDL_Renderer *renderer, Player player)
  * @player: a struct that holds player directions and coordinates.
  * Return: nothing.
  */
-void render_map(SDL_Renderer *renderer, Player player)
+void render_map(SDL_Renderer *renderer, Game_env *game, Player player)
 {
 	/* Size of each tile on the minimap */
 	int tile_size = MAP_SCALE;
@@ -59,7 +59,7 @@ void render_map(SDL_Renderer *renderer, Player player)
 				tile_size,
 				tile_size
 				};
-			if (map[x][y] == 1)
+			if (game->map[x][y] == 1)
 				/* Wall tile */
 				/* White color for walls */
 				SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);

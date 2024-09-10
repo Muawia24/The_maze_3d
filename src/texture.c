@@ -1,7 +1,4 @@
 #include "headers/maze.h"
-
-SDL_Texture* wall_texture;    /* Wall texture */
-SDL_Texture* ceiling_texture; /* Ceiling texture */
 /**
  * load_texture - Load a texture from a file.
  * @renderer: SDL renderer.
@@ -21,9 +18,9 @@ SDL_Texture* load_texture(SDL_Renderer *renderer, const char* file) {
  * @player: a struct that holds player directions and coordinates.
  * Return: nothing 
  */
-void render_textured_floor_and_ceiling(SDL_Renderer *renderer, Player player) {
+void render_textured_floor_and_ceiling(SDL_Renderer *renderer, Game_env *game, Player player) {
     int tex_width, tex_height;
-    SDL_QueryTexture(ceiling_texture, NULL, NULL, &tex_width, &tex_height);
+    SDL_QueryTexture(game->ceiling_texture, NULL, NULL, &tex_width, &tex_height);
 
     /* Render the static ceiling (top half of the screen) */
     for (int y = 0; y < SCREEN_HEIGHT / 2; y++) {
@@ -37,7 +34,7 @@ void render_textured_floor_and_ceiling(SDL_Renderer *renderer, Player player) {
         SDL_Rect dest_rect = { 0, y, SCREEN_WIDTH, 1 };
 
         /* Render the entire row in one call */
-        SDL_RenderCopy(renderer, ceiling_texture, &src_rect, &dest_rect);
+        SDL_RenderCopy(renderer, game->ceiling_texture, &src_rect, &dest_rect);
     }
 
     /* Render the floor (bottom half) as a solid color (you can replace it with a texture) */

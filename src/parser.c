@@ -5,7 +5,7 @@
  * Return: 0 in success otherwise 1.
  */
 /* Function to load the map from a file */
-int load_map_from_file(const char* filename)
+int load_map_from_file(const char* filename, Game_env *game)
 {
 	FILE *file = fopen(filename, "r");
 	if (file == NULL)
@@ -26,9 +26,9 @@ int load_map_from_file(const char* filename)
         /* Read each character in the line */
         for (int col = 0; col < MAP_WIDTH; col++) {
             if (line[col] == '1') {
-                map[col][row] = 1;  /* Wall */
+                game->map[col][row] = 1;  /* Wall */
             } else if (line[col] == '0') {
-                map[col][row] = 0;  /* Empty space */
+                game->map[col][row] = 0;  /* Empty space */
             } else {
                 printf("Invalid character '%c' in map file at row %d, col %d\n", line[col], row, col);
                 fclose(file);
