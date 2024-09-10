@@ -1,24 +1,9 @@
 #include "headers/maze.h"
 
+SDL_Texture* wall_texture;    /* Wall texture */
+SDL_Texture* ceiling_texture; /* Ceiling texture */
 
-int map[MAP_WIDTH][MAP_HEIGHT] = {
-    {1,1,1,1,1,1,1,1,1,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,0,1,0,0,0,1,0,0,1},
-    {1,0,1,0,1,1,1,0,0,1},
-    {1,0,1,0,1,0,0,1,0,1},
-    {1,0,0,0,1,0,0,1,0,1},
-    {1,0,1,1,1,0,0,1,0,1},
-    {1,0,0,0,0,0,1,0,0,1},
-    {1,0,0,0,0,0,0,0,0,1},
-    {1,1,1,1,1,1,1,1,1,1}
-};
-
-SDL_Texture* wall_texture;    // Wall texture
-SDL_Texture* ceiling_texture; // Ceiling texture
-
-
-// Perform Digital Differential Analysis (DDA) to handle ray intersections
+/* Perform Digital Differential Analysis (DDA) to handle ray intersections */
 double cast_ray(double player_x, double player_y, double ray_angle, int *side, double *hit_x) {
     int map_x = (int)player_x;
     int map_y = (int)player_y;
@@ -50,11 +35,11 @@ double cast_ray(double player_x, double player_y, double ray_angle, int *side, d
         if (side_dist_x < side_dist_y) {
             side_dist_x += delta_dist_x;
             map_x += step_x;
-            *side = 0;  // Hit on the X side
+            *side = 0;  /* Hit on the X side */
         } else {
             side_dist_y += delta_dist_y;
             map_y += step_y;
-            *side = 1;  // Hit on the Y side
+            *side = 1;  /* Hit on the Y side */
         }
 
         if (map_x >= 0 && map_x < MAP_WIDTH && map_y >= 0 && map_y < MAP_HEIGHT) {
@@ -64,13 +49,13 @@ double cast_ray(double player_x, double player_y, double ray_angle, int *side, d
         }
     }
 
-    // Calculate where the ray hit the wall (x-coordinate on the texture)
+    /* Calculate where the ray hit the wall (x-coordinate on the texture) */
     if (*side == 0) {
         *hit_x = player_y + (side_dist_x - delta_dist_x) * sin(ray_angle);
     } else {
         *hit_x = player_x + (side_dist_y - delta_dist_y) * cos(ray_angle);
     }
-    *hit_x -= floor(*hit_x);  // Get fractional part of the hit location
+    *hit_x -= floor(*hit_x);  /* Get fractional part of the hit location */
 
     if (*side == 0) {
         return (map_x - player_x + (1 - step_x) / 2) / cos(ray_angle);
@@ -79,32 +64,32 @@ double cast_ray(double player_x, double player_y, double ray_angle, int *side, d
     }
 }
 
-// Correct fish-eye effect and render textured walls
+/* Correct fish-eye effect and render textured walls */
 void render_walls(SDL_Renderer *renderer, Player player) {
     int tex_width, tex_height;
     SDL_QueryTexture(wall_texture, NULL, NULL, &tex_width, &tex_height);
 
     for (int ray = 0; ray < NUM_RAYS; ray++) {
-        // Calculate ray angle with FOV spread
+        /* Calculate ray angle with FOV spread */
         double ray_angle = player.angle - (FOV / 2) * (M_PI / 180.0) + (ray * (FOV * (M_PI / 180.0)) / NUM_RAYS);
         
         int side;
         double hit_x;
-        // Cast the ray and get the distance to the wall
+        /* Cast the ray and get the distance to the wall */
         double distance_to_wall = cast_ray(player.x, player.y, ray_angle, &side, &hit_x);
 
-        // Correct fish-eye effect
+        /* Correct fish-eye effect */
         distance_to_wall *= cos(ray_angle - player.angle);
 
-        // Calculate wall height based on corrected distance
+        /* Calculate wall height based on corrected distance */
         int wall_height = (int)(SCREEN_HEIGHT / distance_to_wall);
 
-        // Get the x-coordinate of the texture
+        /* Get the x-coordinate of the texture */
         int tex_x = (int)(hit_x * tex_width);
         if (side == 0 && cos(ray_angle) > 0) tex_x = tex_width - tex_x - 1;
         if (side == 1 && sin(ray_angle) < 0) tex_x = tex_width - tex_x - 1;
 
-        // Draw the textured wall slice
+        /* Draw the textured wall slice */
         SDL_Rect src_rect = {tex_x, 0, 1, tex_height};
         SDL_Rect dest_rect = {ray, (SCREEN_HEIGHT - wall_height) / 2, 1, wall_height};
         SDL_RenderCopy(renderer, wall_texture, &src_rect, &dest_rect);

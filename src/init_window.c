@@ -1,3 +1,4 @@
+/* init_window.c */
 #include "headers/maze.h"
 /**
  * init_instance - Function that initialize SDL window and SDL surface.
