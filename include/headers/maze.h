@@ -18,14 +18,24 @@
 #define TILE_SIZE 1.0
 #define MAP_SCALE 10  /* Scale for the minimap (each map tile is 10x10 pixels) */
 
+/**
+ * SDL_Instance - struct to initialize a window instance.
+ * @window: SDL window.
+ * @renderer: SDL renderer.
+ */
 typedef struct SDL_Instance
 {
         SDL_Window *window;
         SDL_Renderer *renderer;
 } SDL_Instance;
 
-/* Player structure */
-typedef struct {
+/**
+ * Player - struct for the player motion coordinates.
+ * @x: x-coordinates (horizontal).
+ * @y: y-coordinates (vertical).
+ * @angle: player rotation angle.
+ */
+typedef struct Player{
     double x, y;
     double angle;
 } Player;

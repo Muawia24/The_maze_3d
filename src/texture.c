@@ -2,8 +2,12 @@
 
 SDL_Texture* wall_texture;    /* Wall texture */
 SDL_Texture* ceiling_texture; /* Ceiling texture */
-
-/* Load a texture from a file */
+/**
+ * load_texture - Load a texture from a file.
+ * @renderer: SDL renderer.
+ * @file: path to the texture file.
+ * Return: The SDL texture.
+ */
 SDL_Texture* load_texture(SDL_Renderer *renderer, const char* file) {
     SDL_Texture *texture = IMG_LoadTexture(renderer, file);
     if (!texture) {
@@ -11,8 +15,12 @@ SDL_Texture* load_texture(SDL_Renderer *renderer, const char* file) {
     }
     return texture;
 }
-
-/* Optimized function to render the static textured ceiling and the floor */
+/**
+ * render_textured_floor_and_ceiling - renders textured ceiling and floor
+ * @renderer: SDL renderer.
+ * @player: a struct that holds player directions and coordinates.
+ * Return: nothing 
+ */
 void render_textured_floor_and_ceiling(SDL_Renderer *renderer, Player player) {
     int tex_width, tex_height;
     SDL_QueryTexture(ceiling_texture, NULL, NULL, &tex_width, &tex_height);
