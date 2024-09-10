@@ -2,8 +2,15 @@
 
 SDL_Texture* wall_texture;    /* Wall texture */
 SDL_Texture* ceiling_texture; /* Ceiling texture */
-
-/* Perform Digital Differential Analysis (DDA) to handle ray intersections */
+/**
+ * cast_ray - Perform Digital Differential Analysis (DDA)
+ * @player_x: player horizontal coordinates.
+ * @player_y: player vertical coordinates.
+ * @ray_angle: the player view angle.
+ * @side: definese the side hit 0 for x 1 for y
+ * @hit_x: texture hit x-coordinate.
+ * Return: Distance to wall.
+ */
 double cast_ray(double player_x, double player_y, double ray_angle, int *side, double *hit_x) {
     int map_x = (int)player_x;
     int map_y = (int)player_y;
@@ -65,6 +72,12 @@ double cast_ray(double player_x, double player_y, double ray_angle, int *side, d
 }
 
 /* Correct fish-eye effect and render textured walls */
+/**
+ * render_walls - render textured walls.
+ * @renderer: SDL renderer.
+ * @player: player movment coordinates.
+ * Return: nothing.
+ */
 void render_walls(SDL_Renderer *renderer, Player player) {
     int tex_width, tex_height;
     SDL_QueryTexture(wall_texture, NULL, NULL, &tex_width, &tex_height);

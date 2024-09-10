@@ -1,6 +1,11 @@
 #include "headers/maze.h"
 int map[MAP_WIDTH][MAP_HEIGHT];
-/* Function to handle input and sliding along walls when colliding */
+/**
+ * handle_input - handle input and sliding along walls.
+ * @player: a struct that holds player directions and coordinates.
+ * @keyState: pointer to the keyboard input status.
+ * Return: nothing.
+ */
 void handle_input(Player *player, const Uint8 *keyState) {
     double move_x = 0, move_y = 0;
 

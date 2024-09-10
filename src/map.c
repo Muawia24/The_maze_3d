@@ -1,5 +1,10 @@
 #include "headers/maze.h"
-
+/**
+ * draw_player_mapDirection - Draw the player on the 2d map in the window corner.
+ * @renderer: SDL renderer.
+ * @player: a struct that holds player directions and coordinates.
+ * Return: nothing.
+ */
 void draw_player_mapDirection(SDL_Renderer *renderer, Player player)
 {
     int tile_size = MAP_SCALE;
@@ -22,7 +27,12 @@ void draw_player_mapDirection(SDL_Renderer *renderer, Player player)
         map_offset_x + player.x * tile_size, map_offset_y + player.y * tile_size,
         line_x, line_y);
 }
-/* Function to render the minimap */
+/**
+ * render_map - Draws a 2d map to track the player movement on the window.
+ * @renderer: SDL renderer.
+ * @player: a struct that holds player directions and coordinates.
+ * Return: nothing.
+ */
 void render_map(SDL_Renderer *renderer, Player player)
 {
     int tile_size = MAP_SCALE;  /* Size of each tile on the minimap */

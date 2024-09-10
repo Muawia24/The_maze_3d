@@ -76,7 +76,7 @@ int main(int argc, char* argv[]) {
         return 1;
 
     /* Load the map from a file */
-    if (!load_map_from_file("maps/map.txt")) {
+    if (load_map_from_file("maps/map.txt") != 0) {
         clean_up(instance.renderer, instance.window);
         return 1;
     }
