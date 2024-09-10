@@ -5,12 +5,14 @@
  * Return: 0 in success otherwise 1.
  */
 /* Function to load the map from a file */
-int load_map_from_file(const char* filename) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        printf("Failed to open map file: %s\n", filename);
-        return 1;
-    }
+int load_map_from_file(const char* filename)
+{
+	FILE *file = fopen(filename, "r");
+	if (file == NULL)
+	{
+		printf("Failed to open map file: %s\n", filename);
+		return (1);
+	}
     char line[MAP_WIDTH + 2];  /* Buffer to hold each line of the file (including newline) */
     int row = 0;
 
