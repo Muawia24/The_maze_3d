@@ -38,6 +38,7 @@ void draw_player_mapDirection(SDL_Renderer *renderer, Player player)
 /**
  * render_map - Draws a 2d map to track the player movement on the window.
  * @renderer: SDL renderer.
+ * @game: pointrt to struct for game map and textures.
  * @player: a struct that holds player directions and coordinates.
  * Return: nothing.
  */

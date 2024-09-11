@@ -41,16 +41,16 @@ typedef struct Player
 } Player;
 
 /**
- * struct game_env - struct for game map and textures.
+ * struct Game_env - struct for game map and textures.
  * @map: map array.
  * @ceiling_texture: Ceiling texture
  * @wall_texture: Wall texture.
  */
 typedef struct Game_env
 {
-        int map[MAP_WIDTH][MAP_HEIGHT];
-        SDL_Texture *wall_texture;
-        SDL_Texture *ceiling_texture; 
+	int map[MAP_WIDTH][MAP_HEIGHT];
+	SDL_Texture *wall_texture;
+	SDL_Texture *ceiling_texture;
 } Game_env;
 /* Function declarations */
 int init_instance(SDL_Instance *instance);
