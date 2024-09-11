@@ -38,3 +38,4 @@ int handle_input(Player *player, Game_env *game, const Uint8 *keyState)
 		return (0);
 
 	return (1);
+}
