@@ -54,7 +54,7 @@ typedef struct Game_env
 } Game_env;
 /* Function declarations */
 int init_instance(SDL_Instance *instance);
-void handle_input(Player *player, Game_env *game, const Uint8 *keyState);
+int handle_input(Player *player, Game_env *game, const Uint8 *keyState);
 void render_textured_floor_and_ceiling(SDL_Renderer *renderer,
 		Game_env *game, Player player);
 double cast_ray(double player_x, double player_y, double ray_angle,
