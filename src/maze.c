@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
 				running = 0;
 		}
 		/* Handle input */
-		handle_input(&player, &game, keyState);
+		running = handle_input(&player, &game, keyState);
 		/* Render Game environment */
 		render_env(instance.renderer, &game, player);
 		SDL_Delay(16);  /* ~60 FPS */
