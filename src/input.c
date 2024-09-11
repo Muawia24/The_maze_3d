@@ -3,6 +3,7 @@
 /**
  * handle_input - handle input and sliding along walls.
  * @player: a struct that holds player directions and coordinates.
+ * @game: pointer to struct for game map and textures.
  * @keyState: pointer to the keyboard input status.
  * Return: 1 or 0.
  */

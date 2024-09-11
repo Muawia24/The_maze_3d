@@ -3,6 +3,7 @@
 /**
  * render_env - renders the Game environment (walls, texture, 2d map)
  * @renderer: SDL renderer.
+ * @game: pointer to struct for game map and textures.
  * @player: a struct that holds player directions and coordinates.
  * Return: nothing
  */
@@ -24,11 +25,13 @@ void render_env(SDL_Renderer *renderer, Game_env *game, Player player)
  * load_all_textures - loades all textures wall, ceiling, floor.
  * @renderer: SDL renderer.
  * @window: SDL window.
+ * @game: pointer to struct for game map and textures.
  * @file1: path to wall texture.
  * @file2: path to ceil texture.
  * Return: 0 in success otherwise 1.
  */
-int load_all_textures(SDL_Renderer *renderer, Game_env *game, SDL_Window *window,
+int load_all_textures(SDL_Renderer *renderer, Game_env *game,
+			SDL_Window *window,
 			const char *file1, const char *file2)
 {
 	/* Load the wall texture */
@@ -86,7 +89,6 @@ int main(int argc, char *argv[])
 	}
 	Player player = {5, 5, 0};  /* Start in the middle of the map */
 
-	/* Load textures */
 	if (load_all_textures(instance.renderer, &game, instance.window,
 				"textures/Bricks.png",
 				"textures/ceiling-sky.png") != 0)
@@ -104,7 +106,7 @@ int main(int argc, char *argv[])
 		/* Handle input */
 		running = handle_input(&player, &game, keyState);
 		/* Render Game environment */
-		render_env(instance.renderer, &game,player);
+		render_env(instance.renderer, &game, player);
 		SDL_Delay(16);  /* ~60 FPS */
 	}
 	/* Cleanup */
