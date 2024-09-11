@@ -8,8 +8,8 @@
 
 #define SCREEN_WIDTH 640
 #define SCREEN_HEIGHT 480
-#define MAP_WIDTH 10
-#define MAP_HEIGHT 10
+#define MAP_WIDTH 20
+#define MAP_HEIGHT 20
 #define FOV 60
 #define NUM_RAYS SCREEN_WIDTH
 #define PLAYER_SPEED 0.05
