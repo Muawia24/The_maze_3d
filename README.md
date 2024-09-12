@@ -9,7 +9,7 @@ The Maze 3D is a simple 3D maze game created using SDL2 in C. In this game, play
 - **Textured Walls, Floor, and Ceiling**: The maze environment is brought to life with textures on the walls, floor, and ceiling.
 
 ## Game Preview
-![The Maze 3D](images/screenshot.png)
+![The Maze 3D](images/screenshot2.png)![The Maze 3D](images/screenshot.png)
 
 ## Requirements
 To compile and run the game, you'll need the following libraries:
