@@ -54,13 +54,19 @@ typedef struct Game_env
 	SDL_Texture *ceiling_texture;
 } Game_env;
 
-// Raindrop structure
-typedef struct {
-    float x, y;   // Position
-    float speed;  // Speed of the raindrop
+/**
+ * struct Raindrop - Raindrop coordinates and speed
+ * @x: x-coordinate for raindrop.
+ * @y: y-coordinate for raindrop.
+ * @speed: raindrop speed.
+ */
+typedef struct Raindrop
+{
+	float x, y;
+	float speed;
 } Raindrop;
 
-extern Raindrop raindrops[MAX_RAIN_DROPS]; 
+extern Raindrop raindrops[MAX_RAIN_DROPS];
 
 /* Function declarations */
 int init_instance(SDL_Instance *instance);
@@ -74,8 +80,8 @@ SDL_Texture *load_texture(SDL_Renderer *renderer, const char *file);
 void render_map(SDL_Renderer *renderer, Game_env *game, Player player);
 void render_env(SDL_Renderer *rendrer, Game_env *game, Player player);
 int load_map_from_file(const char *filename, Game_env *game);
-void init_rain();
-void update_rain();
+void init_rain(void);
+void update_rain(void);
 void render_rain(SDL_Renderer *renderer);
 
 #endif /* MAZE_H*/

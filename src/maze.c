@@ -100,8 +100,7 @@ int main(int argc, char *argv[])
 				"textures/ceiling-sky.png") != 0)
 		return (1);
 
-	init_rain();
-
+	init_rain(); /* initialize raindrop */
 	const Uint8 *keyState = SDL_GetKeyboardState(NULL);
 
 	while (running)
@@ -111,12 +110,9 @@ int main(int argc, char *argv[])
 			if (event.type == SDL_QUIT)
 				running = 0;
 		}
-		/* Handle input */
-		running = handle_input(&player, &game, keyState);
-
-		update_rain();
-		/* Render Game environment */
-		render_env(instance.renderer, &game, player);
+		running = handle_input(&player, &game, keyState);/* Handle input */
+		update_rain(); /* updates raindrop */
+		render_env(instance.renderer, &game, player);/* Render Game environment */
 		SDL_Delay(16);  /* ~60 FPS */
 	}
 	/* Cleanup */
