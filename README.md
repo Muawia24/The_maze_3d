@@ -28,7 +28,7 @@ $ git clone https://github.com/Muawia24/The_Maze_3d.git
 ## Compailation and Running The Game
 To compile the game, use the following command in your terminal:
 ```bash
-$ make
+$ make all
 ```
 This creates an executable maze, run the Game by running this on terminal:
 ```bash
