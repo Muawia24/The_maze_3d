@@ -16,6 +16,7 @@
 #define PLAYER_ROT_SPEED 0.03
 #define TILE_SIZE 1.0
 #define MAP_SCALE 10  /* Scale for the minimap */
+#define MAX_RAIN_DROPS 1000
 
 /**
  * struct SDL_Instance - struct to initialize a window instance.
@@ -52,6 +53,15 @@ typedef struct Game_env
 	SDL_Texture *wall_texture;
 	SDL_Texture *ceiling_texture;
 } Game_env;
+
+// Raindrop structure
+typedef struct {
+    float x, y;   // Position
+    float speed;  // Speed of the raindrop
+} Raindrop;
+
+extern Raindrop raindrops[MAX_RAIN_DROPS]; 
+
 /* Function declarations */
 int init_instance(SDL_Instance *instance);
 int handle_input(Player *player, Game_env *game, const Uint8 *keyState);
@@ -64,5 +74,8 @@ SDL_Texture *load_texture(SDL_Renderer *renderer, const char *file);
 void render_map(SDL_Renderer *renderer, Game_env *game, Player player);
 void render_env(SDL_Renderer *rendrer, Game_env *game, Player player);
 int load_map_from_file(const char *filename, Game_env *game);
+void init_rain();
+void update_rain();
+void render_rain(SDL_Renderer *renderer);
 
 #endif /* MAZE_H*/

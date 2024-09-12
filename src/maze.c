@@ -1,4 +1,3 @@
-/* main.c */
 #include "headers/maze.h"
 /**
  * render_env - renders the Game environment (walls, texture, 2d map)
@@ -12,12 +11,19 @@ void render_env(SDL_Renderer *renderer, Game_env *game, Player player)
 	/* Clear screen */
 	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
 	SDL_RenderClear(renderer);
+
 	/* Render the textured floor and ceiling */
 	render_textured_floor_and_ceiling(renderer, game, player);
+
 	/* Render walls with textures */
 	render_walls(renderer, game, player);
+
 	/* Render the 2D map */
 	render_map(renderer, game, player);
+
+	/* Render rain drops */
+	render_rain(renderer);
+
 	/* Present renderer */
 	SDL_RenderPresent(renderer);
 }
@@ -94,6 +100,8 @@ int main(int argc, char *argv[])
 				"textures/ceiling-sky.png") != 0)
 		return (1);
 
+	init_rain();
+
 	const Uint8 *keyState = SDL_GetKeyboardState(NULL);
 
 	while (running)
@@ -105,6 +113,8 @@ int main(int argc, char *argv[])
 		}
 		/* Handle input */
 		running = handle_input(&player, &game, keyState);
+
+		update_rain();
 		/* Render Game environment */
 		render_env(instance.renderer, &game, player);
 		SDL_Delay(16);  /* ~60 FPS */
