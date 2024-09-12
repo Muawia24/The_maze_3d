@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * draw_player_mapDirection - Draw the player on the 2d map in the
  * window corner.

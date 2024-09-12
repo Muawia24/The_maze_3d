@@ -1,98 +1,70 @@
-# alx-maze_project
-This is the alternative 'Maze project' for the 'Research &amp; Project approval (Part 1)' project in the ALX Software Engineering program.
+# The Maze 3D Game
 
-# **Maze project**
+The Maze 3D is a simple 3D maze game created using SDL2 in C. In this game, players can navigate through a maze, rendered using basic raycasting techniques, and observe a 2D minimap for guidance. Additionally, a rain effect has been added to enhance the game's environment, simulating a rainy atmosphere as the player explores the maze.
 
-## Background Context
+## Features
+- **3D Maze Rendering**: The game uses raycasting to render a 3D view of the maze.
+- **2D Minimap**: A minimap is displayed on the screen, showing the player's position and orientation within the maze.
+- **Rain Effect**: Simulated raindrops fall across the screen, except for the area covered by the 2D minimap.
+- **Textured Walls, Floor, and Ceiling**: The maze environment is brought to life with textures on the walls, floor, and ceiling.
 
-The goal of this project is to create a game in 3D using raycasting !
+## Game Preview
+![The Maze 3D](images/screenshot.png)
 
-## Tasks
+## Requirements
+To compile and run the game, you'll need the following libraries:
+- **SDL2**: For rendering graphics and handling input.
+- **SDL2_image**: For loading PNG textures for walls, floor, and ceiling.
 
-0. Walls !
+Make sure to install these libraries using your package manager. For example, on Ubuntu:
+```bash
+sudo apt-get install libsdl2-dev libsdl2-image-dev
+```
+## Installation
+```bash
+$ git clone https://github.com/Muawia24/The_Maze_3d.git
+```
 
-    In this first part, you’ll have to:
-    * Create a window with SDL2
-    * Use [raycasting](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents/) to draw walls on your window !
-    * You don’t need to be able to rotate the camera during the execution in this part, but you must provide a way to change the angle of the camera in your code to see if it works after recompiling it
-    * The color of the walls must be different from the color of the ground/ceil
-    * The map doesn’t need to be parsed from a file, but you must provide a way to modify it in your code to see if it works after recompiling it. (e.g. using an array of arrays of integers or characters)
+## Compailation and Running The Game
+To compile the game, use the following command in your terminal:
+```bash
+$ make
+```
+This creates an executable maze, run the Game by running this on terminal:
+```bash
+$./maze
+```
 
-1. Orientation
+### Controls
 
-    In this part, you must draw a different color depending on the orientation of the walls.
-    * You must at least draw walls facing `NORTH and SOUTH` in a different color from walls facing `EAST and WEST`
+- **UP & W**: Move forward
+- **Down & S**: Move backward
+- **LEFT & A**: Rotate left
+- **RIGHT & D**: Rotate right
+- **Esc**: Quit the game
 
-2. Rotation
+## Features
 
-    You must provide a way to rotate the camera during the execution.
-    * For example, you can rotate the camera when the `left,right` arrows are pressed on the keyboard
-    * Or you can rotate the camera when the mouse moves, just like a FPS game !
+#3D Maze Gameplay:
 
-3. Move
+- Navigate through a maze where you can see textured walls, ceiling, and floor.
+- Player movement is handled with smooth wall sliding when a collision occurs.
 
-    You must provide a way to move the camera during the execution.
-    * For example, you can move the camera when the `w,a,s,d` keys are pressed on the keyboard
+#2D Minimap:
 
-4. Ouch !
+- The minimap provides a bird's-eye view of the maze.
+- The player's current position and orientation are displayed on the minimap, allowing for easier navigation.
 
-    In this part, you must handle the collisions of the player (yes, let’s call the camera `player` now, it’s getting serious) with the walls.
-    * The player must not be able to enter walls
-    * You can make the player slide on the walls instead of just stop it
+# Rain Effect:
 
-5. Parser
+- A simple particle system simulates raindrops falling from the sky.
+- Raindrops are rendered as lines and avoid the 2D minimap area, ensuring that the minimap remains clear.
 
-    In this part you must implement a parser to get the map from a file.
-    * You are free to define the standards of your map (The character for a wall, the character for nothing, the extension of the file if you want, …)
-    * Your program will need a parameter to run which will be the path to the map file
+## Customizing the Map
 
-6. Draw the map
+You can modify ![Map file](maps/map.txt) to create different maze layouts. Each line should have 20 characters, representing the width of the maze.
 
-    In this part, you must draw the map on the window.
-    * You’re free to draw the map where you want, with the color you want, …
-    * You must provide a way to enable/disable it during the execution
-    * Include the player’s line of sight in the map
+## Authors
 
-7. Coding style + Documentation
-
-    * Check if your code fits the [Holberton School coding style](https://github.com/holbertonschool/Betty/wiki)
-    * Check if your code is well documented and respect the [Holberton School documentation format](https://github.com/holbertonschool/Betty/blob/master/betty-doc.pl)
-
-    You can check all of this by yourself, just follow the instructions on this [repository](https://github.com/holbertonschool/Betty).
-
-    __Be careful__
-
-    The check will be done on each file present on your turn in repository. Even the files that was not required. So don’t forget to always keep your turn in directory clean.
-
-8. Textures
-
-    In this part you have to add textures on your walls !
-
-9. Multi task !
-
-    Add a way to move on several directions and rotate in the same time. Basically in this part you’ll have to handle multiple events on the same frame.
-
-    For example, if the keys to move are `w,a,s,d`:
-    * If the keys `w` and `s` are pressed in the same time, the player shouldn’t move,
-    * If the keys `w` and `d` are pressed in the same time, the player should move forward and right in the same time,
-    * …
-
-10. Ground textures
-
-    In this part you have to add textures on the ground and/or on the ceiling !
-
-11. Weapons
-
-    Add weapons textures !
-
-12. Enemies
-
-    Add some enemies !
-
-13. Make it rain
-
-    Add rain and a possibility to stop / start the rain with a key.
-
-14. Extra option
-
-    Shadows, special lightning, etc… get creative!
+- ![Ahmed Muawia](https://github.com/Muawia24).
+- ![Omer Elbasheer](https://github.com/Mr-Robinhood).

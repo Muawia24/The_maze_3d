@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 
 Raindrop raindrops[MAX_RAIN_DROPS];
 /**

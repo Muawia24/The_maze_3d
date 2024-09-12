@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * cast_ray - Perform Digital Differential Analysis (DDA)
  * @player_x: player horizontal coordinates.

@@ -1,5 +1,5 @@
 /* init_window.c */
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * init_instance - Function that initialize SDL window and SDL surface.
  * @instance: instance of a struct that contains SDL window and surface.

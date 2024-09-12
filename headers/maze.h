@@ -72,7 +72,7 @@ extern Raindrop raindrops[MAX_RAIN_DROPS];
 int init_instance(SDL_Instance *instance);
 int handle_input(Player *player, Game_env *game, const Uint8 *keyState);
 void render_textured_floor_and_ceiling(SDL_Renderer *renderer,
-		Game_env *game, Player player);
+		Game_env *game);
 double cast_ray(double player_x, double player_y, double ray_angle,
 		int *side, double *hit_x, Game_env *game);
 void render_walls(SDL_Renderer *renderer, Game_env *game, Player player);

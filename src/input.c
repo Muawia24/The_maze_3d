@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * handle_input - handle input and sliding along walls.
  * @player: a struct that holds player directions and coordinates.

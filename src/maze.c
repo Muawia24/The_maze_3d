@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * render_env - renders the Game environment (walls, texture, 2d map)
  * @renderer: SDL renderer.
@@ -13,7 +13,7 @@ void render_env(SDL_Renderer *renderer, Game_env *game, Player player)
 	SDL_RenderClear(renderer);
 
 	/* Render the textured floor and ceiling */
-	render_textured_floor_and_ceiling(renderer, game, player);
+	render_textured_floor_and_ceiling(renderer, game);
 
 	/* Render walls with textures */
 	render_walls(renderer, game, player);
@@ -78,7 +78,7 @@ void clean_up(SDL_Renderer *renderer, SDL_Window *window)
  * @argv: array of terminal arguments.
  * Return: 0 in success otherwise 1.
  */
-int main(int argc, char *argv[])
+int main(void)
 {
 	int running = 1;
 	SDL_Event event;

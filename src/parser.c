@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * load_map_from_file - Parses and load the mape from a file.
  * @filename: Path to map file.

@@ -1,4 +1,4 @@
-#include "headers/maze.h"
+#include "../headers/maze.h"
 /**
  * load_texture - Load a texture from a file.
  * @renderer: SDL renderer.
@@ -22,7 +22,7 @@ SDL_Texture *load_texture(SDL_Renderer *renderer, const char *file)
  * Return: nothing.
  */
 void render_textured_floor_and_ceiling(SDL_Renderer *renderer,
-				Game_env *game, Player player)
+				Game_env *game)
 {
 	int tex_width, tex_height;
 
