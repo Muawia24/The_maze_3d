@@ -9,7 +9,7 @@ The Maze 3D is a simple 3D maze game created using SDL2 in C. In this game, play
 - **Textured Walls, Floor, and Ceiling**: The maze environment is brought to life with textures on the walls, floor, and ceiling.
 
 ## Game Preview
-![The Maze 3D](images/screenshot.png)
+[The Maze 3D](images/screenshot.png)
 
 ## Requirements
 To compile and run the game, you'll need the following libraries:
@@ -62,9 +62,9 @@ $./maze
 
 ## Customizing the Map
 
-You can modify ![Map file](maps/map.txt) to create different maze layouts. Each line should have 20 characters, representing the width of the maze.
+You can modify [Map file](maps/map.txt) to create different maze layouts. Each line should have 20 characters, representing the width of the maze.
 
 ## Authors
 
-- ![Ahmed Muawia](https://github.com/Muawia24).
-- ![Omer Elbasheer](https://github.com/Mr-Robinhood).
+- **Ahmed Muawia**: [Github](https://github.com/Muawia24), [Twitter](https://x.com/0x01_Muawia).
+- **Omer Elbasheer**: [Github](https://github.com/Mr-Robinhood), [Twitter](https://x.com/omerjr7)
