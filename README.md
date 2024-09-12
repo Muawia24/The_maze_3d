@@ -66,5 +66,5 @@ You can modify [Map file](maps/map.txt) to create different maze layouts. Each l
 
 ## Authors
 
-- **Ahmed Muawia**: [Github](https://github.com/Muawia24), [Twitter](https://x.com/0x01_Muawia).
-- **Omer Elbasheer**: [Github](https://github.com/Mr-Robinhood), [Twitter](https://x.com/omerjr7)
+- **Ahmed Muawia**: [Github](https://github.com/Muawia24), [Twitter](https://x.com/0x01_Muawia), [LinkedIn](https://www.linkedin.com/in/ahmed-muawia-72b7031b4).
+- **Omer Elbasheer**: [Github](https://github.com/Mr-Robinhood), [Twitter](https://x.com/omerjr7), [LinkedIn](https://www.linkedin.com/in/omer-alfaroug-mohammed-ali/).
