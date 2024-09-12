@@ -1,4 +1,6 @@
 #include "headers/maze.h"
+
+Raindrop raindrops[MAX_RAIN_DROPS];
 /**
  * init_rain - initialize the raindrops
  * Return: nothing.
