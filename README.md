@@ -55,7 +55,7 @@ $./maze
 - The minimap provides a bird's-eye view of the maze.
 - The player's current position and orientation are displayed on the minimap, allowing for easier navigation.
 
-# Rain Effect:
+#Rain Effect:
 
 - A simple particle system simulates raindrops falling from the sky.
 - Raindrops are rendered as lines and avoid the 2D minimap area, ensuring that the minimap remains clear.
@@ -63,6 +63,11 @@ $./maze
 ## Customizing the Map
 
 You can modify [Map file](maps/map.txt) to create different maze layouts. Each line should have 20 characters, representing the width of the maze.
+
+## Referencess
+- [Raycasting](https://permadi.com/1996/05/ray-casting-tutorial-table-of-contents)
+- [SDL2- tutorial](https://s3.amazonaws.com/alx-intranet.hbtn.io/uploads/misc/2021/1/9da3b82dc0bcfea07858b70956de47f0e2db2dad.pdf?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIARDDGGGOUSBVO6H7D%2F20240919%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240919T002225Z&X-Amz-Expires=86400&X-Amz-SignedHeaders=host&X-Amz-Signature=b79d8ae3f20c5fb87492109fdf3f93333c29ff74c5ea3d68f8d7a208a95886e7)
+- [SDL2-docs](https://lazyfoo.net/tutorials/SDL/index.php)
 
 ## Authors
 
